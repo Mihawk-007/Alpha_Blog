@@ -4,6 +4,15 @@
 
 <hr siz="1px" color="black">
 
+<% if @article.errors.any? %>
+<h2>There Were some Errors</h2>
+<ul>
+  <% @article.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
+
 <%= form_with scope: :article, url: articles_path, local: true do |f| %>
   <p>
     <%= f.label :title %><br>
@@ -16,4 +25,5 @@
   </p>
 
   <p><%= f.submit %></p>
+
 <% end %>
